@@ -119,7 +119,7 @@ CREATE TABLE SPONSORSHIP (
     STATUS NVARCHAR2(20) NOT NULL CHECK (STATUS IN ('SUCCESSFUL', 'PENDING', 'CANCELLED'))
 );
 
--- User_Followers (junction table for many-to-many self-referencing relationship in User)
+-- User_Followers (junction table for many-to-many self-referencing relationship in User Schema)
 CREATE TABLE USER_FOLLOWERS (
     FOLLOWER_ID NUMBER NOT NULL,
     FOLLOWING_ID NUMBER NOT NULL,
