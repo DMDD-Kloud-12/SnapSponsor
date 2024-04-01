@@ -41,19 +41,18 @@ INSERT INTO USERS (USER_ID, LAST_LOGIN, IS_SUPERUSER, CREATED_AT, NAME, PROFILEI
 
 -- POSTS 
 
-INSERT INTO POSTS (POST_ID, CREATED_AT, TEXT, IMAGE, VENUE, FOOD, MONETARY, OTHER, LIKESCOUNT, COMMENTSCOUNT, USER_ID, ACTIVESTATUS) VALUES (1, TO_TIMESTAMP('2024-03-05 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Tech Conference 2024 - Exploring New Horizons', 'post1.jpg', 'Convention Center', 'Snacks available', 'Free', 'Early bird discount', 100, 30, 2, 1);
-INSERT INTO POSTS (POST_ID, CREATED_AT, TEXT, IMAGE, VENUE, FOOD, MONETARY, OTHER, LIKESCOUNT, COMMENTSCOUNT, USER_ID, ACTIVESTATUS) VALUES (2, TO_TIMESTAMP('2024-03-06 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Annual Charity Run - Run for a Cause', 'post2.jpg', 'City Park', 'Healthy snacks', '$30 entry', 'Prizes for top 3', 150, 25, 1, 1);
-INSERT INTO POSTS (POST_ID, CREATED_AT, TEXT, IMAGE, VENUE, FOOD, MONETARY, OTHER, LIKESCOUNT, COMMENTSCOUNT, USER_ID, ACTIVESTATUS) VALUES (3, TO_TIMESTAMP('2024-03-07 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Art Exhibition Opening Night', 'post3.jpg', 'Art Gallery', 'Wine & Cheese', 'By invite', 'Featured artists', 200, 40, 3, 1);
-INSERT INTO POSTS (POST_ID, CREATED_AT, TEXT, IMAGE, VENUE, FOOD, MONETARY, OTHER, LIKESCOUNT, COMMENTSCOUNT, USER_ID, ACTIVESTATUS) VALUES (4, TO_TIMESTAMP('2024-03-08 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Local Farmers Market - Fresh & Organic', 'post4.jpg', 'Downtown', 'Free samples', 'Free', null, 75, 10, 7, 1);
-INSERT INTO POSTS (POST_ID, CREATED_AT, TEXT, IMAGE, VENUE, FOOD, MONETARY, OTHER, LIKESCOUNT, COMMENTSCOUNT, USER_ID, ACTIVESTATUS) VALUES (5, TO_TIMESTAMP('2024-03-09 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Coding Bootcamp: Learn to Code in 10 Weeks', 'post5.jpg', 'Tech Hub', 'Lunch provided', '$500', 'Scholarships available', 120, 35, 4, 1);
-INSERT INTO POSTS (POST_ID, CREATED_AT, TEXT, IMAGE, VENUE, FOOD, MONETARY, OTHER, LIKESCOUNT, COMMENTSCOUNT, USER_ID, ACTIVESTATUS) VALUES (6, TO_TIMESTAMP('2024-03-10 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Sustainability in Event Planning Workshop', 'post6.jpg', 'Eco Center', 'Vegan friendly', '$20', 'Materials provided', 90, 20, 7, 1);
-INSERT INTO POSTS (POST_ID, CREATED_AT, TEXT, IMAGE, VENUE, FOOD, MONETARY, OTHER, LIKESCOUNT, COMMENTSCOUNT, USER_ID, ACTIVESTATUS) VALUES (7, TO_TIMESTAMP('2024-03-11 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Live Jazz Night - Enjoy Classic Hits', 'post7.jpg', 'Jazz Club', 'Special menu', 'Cover $10', 'Reservations recommended', 85, 15, 9, 1);
-INSERT INTO POSTS (POST_ID, CREATED_AT, TEXT, IMAGE, VENUE, FOOD, MONETARY, OTHER, LIKESCOUNT, COMMENTSCOUNT, USER_ID, ACTIVESTATUS) VALUES (8, TO_TIMESTAMP('2024-03-12 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Gourmet Food Tasting Event', 'post8.jpg', 'Luxury Hotel', 'Chefs selection', '$100', 'Limited seats', 110, 30, 6, 1);
-INSERT INTO POSTS (POST_ID, CREATED_AT, TEXT, IMAGE, VENUE, FOOD, MONETARY, OTHER, LIKESCOUNT, COMMENTSCOUNT, USER_ID, ACTIVESTATUS) VALUES (9, TO_TIMESTAMP('2024-03-13 17:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'DIY Home Decor Workshop', 'post9.jpg', 'Craft Store', 'Snacks & Drinks', '$25', 'All materials included', 95, 22, 5, 1);
-INSERT INTO POSTS (POST_ID, CREATED_AT, TEXT, IMAGE, VENUE, FOOD, MONETARY, OTHER, LIKESCOUNT, COMMENTSCOUNT, USER_ID, ACTIVESTATUS) VALUES (10, TO_TIMESTAMP('2024-03-14 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Yoga Retreat - Find Your Inner Peace', 'post10.jpg', 'Mountain Resort', 'Organic meals', '$300', 'Spa access included', 130, 50, 5, 1);
-INSERT INTO POSTS (POST_ID, CREATED_AT, TEXT, IMAGE, VENUE, FOOD, MONETARY, OTHER, LIKESCOUNT, COMMENTSCOUNT, USER_ID, ACTIVESTATUS) VALUES (11, TO_TIMESTAMP('2024-03-15 19:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Film Screening: Indie Film Night', 'post11.jpg', 'Indie Theater', 'Popcorn & Soda', '$15', 'Q&A with directors', 140, 45, 8, 1);
-INSERT INTO POSTS (POST_ID, CREATED_AT, TEXT, IMAGE, VENUE, FOOD, MONETARY, OTHER, LIKESCOUNT, COMMENTSCOUNT, USER_ID, ACTIVESTATUS) VALUES (12, TO_TIMESTAMP('2024-03-16 20:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Photography Contest: Capture the City', 'post12.jpg', 'Online', null, 'Free', 'Winning prize $500', 160, 60, 4, 1);
-
+EXEC ADD_POST ('Tech Conference 2024 - Exploring New Horizons #tech', 'post1.jpg', 'Convention Center', 'Snacks available', 'Free', 'Early bird discount', 100, 30, 2, 1);
+EXEC ADD_POST ('Annual #Charity Run - Run for a Cause', 'post2.jpg', 'City Park', 'Healthy snacks', '$30 entry', 'Prizes for top 3', 150, 25, 1, 1);
+EXEC ADD_POST ('#Art Exhibition Opening Night', 'post3.jpg', 'Art Gallery', 'Wine & Cheese', 'By invite', 'Featured artists', 200, 40, 3, 1);
+EXEC ADD_POST ('Local #Farmers Market - Fresh & Organic', 'post4.jpg', 'Downtown', 'Free samples', 'Free', null, 75, 10, 7, 1);
+EXEC ADD_POST ('#Coding Bootcamp: Learn to Code in 10 Weeks', 'post5.jpg', 'Tech Hub', 'Lunch provided', '$500', 'Scholarships available', 120, 35, 4, 1);
+EXEC ADD_POST ('Sustainability in Event Planning #Workshop', 'post6.jpg', 'Eco Center', 'Vegan friendly', '$20', 'Materials provided', 90, 20, 7, 1);
+EXEC ADD_POST ('Live Jazz Night - Enjoy #Classic Hits #music', 'post7.jpg', 'Jazz Club', 'Special menu', 'Cover $10', 'Reservations recommended', 85, 15, 9, 1);
+EXEC ADD_POST ('Gourmet #Food Tasting Event', 'post8.jpg', 'Luxury Hotel', 'Chefs selection', '$100', 'Limited seats', 110, 30, 6, 1);
+EXEC ADD_POST ('DIY Home #Decor Workshop #planning', 'post9.jpg', 'Craft Store', 'Snacks & Drinks', '$25', 'All materials included', 95, 22, 5, 1);
+EXEC ADD_POST ('#Yoga Retreat - Find Your Inner #Peace', 'post10.jpg', 'Mountain Resort', 'Organic meals', '$300', 'Spa access included', 130, 50, 5, 1);
+EXEC ADD_POST ('Film Screening: Indie #Film Night', 'post11.jpg', 'Indie Theater', 'Popcorn & Soda', '$15', 'Q&A with directors', 140, 45, 8, 1);
+EXEC ADD_POST ('#Photography Contest: Capture the City', 'post12.jpg', 'Online', null, 'Free', 'Winning prize $500', 160, 60, 4, 1);
 
 -- LIKES
 
