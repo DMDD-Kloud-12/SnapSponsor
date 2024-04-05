@@ -13,8 +13,7 @@ SELECT p.post_id,
        p.user_id,
        p.activestatus,
        t.tag_id,
-       t.tag,
-       t.point
+       t.tag
   FROM posts p
        JOIN posts_hashtags ph ON p.post_id = ph.post_id
        JOIN tags t ON ph.hashtag_id = t.tag_id

@@ -27,129 +27,98 @@ select * from  user_hashtags;
 
 -- USERS
 
-INSERT INTO USERS (USER_ID, LAST_LOGIN, IS_SUPERUSER, CREATED_AT, NAME, PROFILEIMAGE, PHONENUMBER, ABOUTME, ABOUTORGANISATION, EMAIL, PASSWORD) VALUES (1, TO_TIMESTAMP('2024-03-10 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), 0, TO_TIMESTAMP('2024-03-01 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Alice Johnson', 'profile1.jpg', '555-1001', 'Organizer of local community events.', 'Community Events', 'alicej@example.com', 'passAlice1');
-INSERT INTO USERS (USER_ID, LAST_LOGIN, IS_SUPERUSER, CREATED_AT, NAME, PROFILEIMAGE, PHONENUMBER, ABOUTME, ABOUTORGANISATION, EMAIL, PASSWORD) VALUES (2, TO_TIMESTAMP('2024-03-09 11:20:00', 'YYYY-MM-DD HH24:MI:SS'), 0, TO_TIMESTAMP('2024-02-25 08:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Bob Smith', 'profile2.jpg', '555-1002', 'Tech enthusiast, loves attending conferences.', 'Tech Innovations', 'bobsmith@example.com', 'passBob2');
-INSERT INTO USERS (USER_ID, LAST_LOGIN, IS_SUPERUSER, CREATED_AT, NAME, PROFILEIMAGE, PHONENUMBER, ABOUTME, ABOUTORGANISATION, EMAIL, PASSWORD) VALUES (3, TO_TIMESTAMP('2024-03-08 09:45:00', 'YYYY-MM-DD HH24:MI:SS'), 0, TO_TIMESTAMP('2024-02-20 07:50:00', 'YYYY-MM-DD HH24:MI:SS'), 'Carol Taylor', 'profile3.jpg', '555-1003', 'Passionate about art and music festivals.', 'Art & music Forever', 'carolt@example.com', 'passCarol3');
-INSERT INTO USERS (USER_ID, LAST_LOGIN, IS_SUPERUSER, CREATED_AT, NAME, PROFILEIMAGE, PHONENUMBER, ABOUTME, ABOUTORGANISATION, EMAIL, PASSWORD) VALUES (4, TO_TIMESTAMP('2024-03-11 08:30:00', 'YYYY-MM-DD HH24:MI:SS'), 1, TO_TIMESTAMP('2024-03-02 10:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'David Lee', 'profile4.jpg', '555-1004', 'Developer and part-time event photographer.', 'Coding & photos', 'davidl@example.com', 'passDavid4');
-INSERT INTO USERS (USER_ID, LAST_LOGIN, IS_SUPERUSER, CREATED_AT, NAME, PROFILEIMAGE, PHONENUMBER, ABOUTME, ABOUTORGANISATION, EMAIL, PASSWORD) VALUES (5, TO_TIMESTAMP('2024-03-07 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), 0, TO_TIMESTAMP('2024-02-18 11:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Emma Wilson', 'profile5.jpg', '555-1005', 'Fitness enthusiast, organizes sports events.', 'Wellness in Motion', 'emmaw@example.com', 'passEmma5');
-INSERT INTO USERS (USER_ID, LAST_LOGIN, IS_SUPERUSER, CREATED_AT, NAME, PROFILEIMAGE, PHONENUMBER, ABOUTME, ABOUTORGANISATION, EMAIL, PASSWORD) VALUES (6, TO_TIMESTAMP('2024-03-12 14:30:00', 'YYYY-MM-DD HH24:MI:SS'), 0, TO_TIMESTAMP('2024-03-03 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Frank Moore', 'profile6.jpg', '555-1006', 'Food critic, enjoys gourmet food events.', 'Taste the Best', 'frankm@example.com', 'passFrank6');
-INSERT INTO USERS (USER_ID, LAST_LOGIN, IS_SUPERUSER, CREATED_AT, NAME, PROFILEIMAGE, PHONENUMBER, ABOUTME, ABOUTORGANISATION, EMAIL, PASSWORD) VALUES (7, TO_TIMESTAMP('2024-03-06 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), 0, TO_TIMESTAMP('2024-02-17 15:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Grace Lee', 'profile7.jpg', '555-1007', 'Advocates for sustainability in events.', 'Green Events', 'gracel@example.com', 'passGrace7');
-INSERT INTO USERS (USER_ID, LAST_LOGIN, IS_SUPERUSER, CREATED_AT, NAME, PROFILEIMAGE, PHONENUMBER, ABOUTME, ABOUTORGANISATION, EMAIL, PASSWORD) VALUES (8, TO_TIMESTAMP('2024-03-13 17:30:00', 'YYYY-MM-DD HH24:MI:SS'), 0, TO_TIMESTAMP('2024-03-04 16:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'Henry Garcia', 'profile8.jpg', '555-1008', 'Enjoys exploring cultural and historic events.', 'CultureQuest', 'henryg@example.com', 'passHenry8');
-INSERT INTO USERS (USER_ID, LAST_LOGIN, IS_SUPERUSER, CREATED_AT, NAME, PROFILEIMAGE, PHONENUMBER, ABOUTME, ABOUTORGANISATION, EMAIL, PASSWORD) VALUES (9, TO_TIMESTAMP('2024-03-05 19:00:00', 'YYYY-MM-DD HH24:MI:SS'), 0, TO_TIMESTAMP('2024-02-15 18:15:00', 'YYYY-MM-DD HH24:MI:SS'), 'Isabella Brown', 'profile9.jpg', '555-1009', 'Freelance writer, covers various events.', 'Stories of Events', 'isabellab@example.com', 'passBella9');
-INSERT INTO USERS (USER_ID, LAST_LOGIN, IS_SUPERUSER, CREATED_AT, NAME, PROFILEIMAGE, PHONENUMBER, ABOUTME, ABOUTORGANISATION, EMAIL, PASSWORD) VALUES (10, TO_TIMESTAMP('2024-03-14 20:30:00', 'YYYY-MM-DD HH24:MI:SS'), 1, TO_TIMESTAMP('2024-03-05 19:50:00', 'YYYY-MM-DD HH24:MI:SS'), 'Jack Davis', 'profile10.jpg', '555-1010', 'Professional DJ, participates in music events.', 'Beats & rhythms', 'jackd@example.com', 'passJack10');
+EXEC ADD_USER (0, 'Alice Johnson', 'profile1.jpg', '2315551001', 'Organizer of local community events.', 'Community Events', 'alicej@example.com', 'passAlice1');
+EXEC ADD_USER (0, 'Bob Smith', 'profile2.jpg', '5553341002', 'Tech enthusiast, loves attending conferences.', 'Tech Innovations', 'bobsmith@example.com', 'passBob2');
+EXEC ADD_USER (0, 'Carol Taylor', 'profile3.jpg', '5551343003', 'Passionate about art and music festivals.', 'Art & music Forever', 'carolt@example.com', 'passCarol3');
+EXEC ADD_USER (1, 'David Lee', 'profile4.jpg', '5551343004', 'Developer and part-time event photographer.', 'Coding & photos', 'davidl@example.com', 'passDavid4');
+EXEC ADD_USER (0, 'Emma Wilson', 'profile5.jpg', '5551364005', 'Fitness enthusiast, organizes sports events.', 'Wellness in Motion', 'emmaw@example.com', 'passEmma5');
+EXEC ADD_USER (0, 'Frank Moore', 'profile6.jpg', '5551456006', 'Food critic, enjoys gourmet food events.', 'Taste the Best', 'frankm@example.com', 'passFrank6');
+EXEC ADD_USER (0, 'Grace Lee', 'profile7.jpg', '5551234007', 'Advocates for sustainability in events.', 'Green Events', 'gracel@example.com', 'passGrace7');
+EXEC ADD_USER (0, 'Henry Garcia', 'profile8.jpg', '5557541008', 'Enjoys exploring cultural and historic events.', 'CultureQuest', 'henryg@example.com', 'passHenry8');
+EXEC ADD_USER (0, 'Isabella Brown', 'profile9.jpg', '5551043709', 'Freelance writer, covers various events.', 'Stories of Events', 'isabellab@example.com', 'passBella9');
+EXEC ADD_USER (0, 'Jack Davis', 'profile10.jpg', '5551547010', 'Professional DJ, participates in music events.', 'Beats & rhythms', 'jackd@example.com', 'passJack10');
 
 
 -- POSTS 
 
-EXEC ADD_POST ('Tech Conference 2024 - Exploring New Horizons #tech', 'post1.jpg', 'Convention Center', 'Snacks available', 'Free', 'Early bird discount', 100, 30, 2, 1);
-EXEC ADD_POST ('Annual #Charity Run - Run for a Cause', 'post2.jpg', 'City Park', 'Healthy snacks', '$30 entry', 'Prizes for top 3', 150, 25, 1, 1);
-EXEC ADD_POST ('#Art Exhibition Opening Night', 'post3.jpg', 'Art Gallery', 'Wine & Cheese', 'By invite', 'Featured artists', 200, 40, 3, 1);
-EXEC ADD_POST ('Local #Farmers Market - Fresh & Organic', 'post4.jpg', 'Downtown', 'Free samples', 'Free', null, 75, 10, 7, 1);
-EXEC ADD_POST ('#Coding Bootcamp: Learn to Code in 10 Weeks', 'post5.jpg', 'Tech Hub', 'Lunch provided', '$500', 'Scholarships available', 120, 35, 4, 1);
-EXEC ADD_POST ('Sustainability in Event Planning #Workshop', 'post6.jpg', 'Eco Center', 'Vegan friendly', '$20', 'Materials provided', 90, 20, 7, 1);
-EXEC ADD_POST ('Live Jazz Night - Enjoy #Classic Hits #music', 'post7.jpg', 'Jazz Club', 'Special menu', 'Cover $10', 'Reservations recommended', 85, 15, 9, 1);
-EXEC ADD_POST ('Gourmet #Food Tasting Event', 'post8.jpg', 'Luxury Hotel', 'Chefs selection', '$100', 'Limited seats', 110, 30, 6, 1);
-EXEC ADD_POST ('DIY Home #Decor Workshop #planning', 'post9.jpg', 'Craft Store', 'Snacks & Drinks', '$25', 'All materials included', 95, 22, 5, 1);
-EXEC ADD_POST ('#Yoga Retreat - Find Your Inner #Peace', 'post10.jpg', 'Mountain Resort', 'Organic meals', '$300', 'Spa access included', 130, 50, 5, 1);
-EXEC ADD_POST ('Film Screening: Indie #Film Night', 'post11.jpg', 'Indie Theater', 'Popcorn & Soda', '$15', 'Q&A with directors', 140, 45, 8, 1);
-EXEC ADD_POST ('#Photography Contest: Capture the City', 'post12.jpg', 'Online', null, 'Free', 'Winning prize $500', 160, 60, 4, 1);
+EXEC ADD_POST ('Tech Conference 2024 - Exploring New Horizons #tech', 'post1.jpg', 'Convention Center', 'Snacks available', 'Free', 'Early bird discount', 2, 1);
+EXEC ADD_POST ('Annual #Charity Run - Run for a Cause', 'post2.jpg', 'City Park', 'Healthy snacks', '$30 entry', 'Prizes for top 3', 1, 1);
+EXEC ADD_POST ('#Art Exhibition Opening Night', 'post3.jpg', 'Art Gallery', 'Wine & Cheese', 'By invite', 'Featured artists', 3, 1);
+EXEC ADD_POST ('Local #Farmers Market - Fresh & Organic', 'post4.jpg', 'Downtown', 'Free samples', 'Free', null, 7, 1);
+EXEC ADD_POST ('#Coding Bootcamp: Learn to Code in 10 Weeks', 'post5.jpg', 'Tech Hub', 'Lunch provided', '$500', 'Scholarships available', 4, 1);
+EXEC ADD_POST ('Sustainability in Event Planning #Workshop', 'post6.jpg', 'Eco Center', 'Vegan friendly', '$20', 'Materials provided', 7, 1);
+EXEC ADD_POST ('Live Jazz Night - Enjoy #Classic Hits #music', 'post7.jpg', 'Jazz Club', 'Special menu', 'Cover $10', 'Reservations recommended', 9, 1);
+EXEC ADD_POST ('Gourmet #Food Tasting Event', 'post8.jpg', 'Luxury Hotel', 'Chefs selection', '$100', 'Limited seats', 6, 1);
+EXEC ADD_POST ('DIY Home #Decor Workshop #planning', 'post9.jpg', 'Craft Store', 'Snacks & Drinks', '$25', 'All materials included', 5, 1);
+EXEC ADD_POST ('#Yoga Retreat - Find Your Inner #Peace', 'post10.jpg', 'Mountain Resort', 'Organic meals', '$300', 'Spa access included', 5, 1);
+EXEC ADD_POST ('Film Screening: Indie #Film Night', 'post11.jpg', 'Indie Theater', 'Popcorn & Soda', '$15', 'Q&A with directors', 8, 1);
+EXEC ADD_POST ('#Photography Contest: Capture the City', 'post12.jpg', 'Online', null, 'Free', 'Winning prize $500', 4, 1);
 
 -- LIKES
 
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (1, TO_TIMESTAMP('2024-03-05 09:45:00', 'YYYY-MM-DD HH24:MI:SS'), 2, 1);
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (2, TO_TIMESTAMP('2024-03-06 10:45:00', 'YYYY-MM-DD HH24:MI:SS'), 3, 1);
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (3, TO_TIMESTAMP('2024-03-07 11:45:00', 'YYYY-MM-DD HH24:MI:SS'), 1, 2);
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (4, TO_TIMESTAMP('2024-03-08 12:45:00', 'YYYY-MM-DD HH24:MI:SS'), 4, 2);
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (5, TO_TIMESTAMP('2024-03-09 13:45:00', 'YYYY-MM-DD HH24:MI:SS'), 5, 3);
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (6, TO_TIMESTAMP('2024-03-10 14:45:00', 'YYYY-MM-DD HH24:MI:SS'), 6, 3);
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (7, TO_TIMESTAMP('2024-03-11 15:45:00', 'YYYY-MM-DD HH24:MI:SS'), 7, 4);
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (8, TO_TIMESTAMP('2024-03-12 16:45:00', 'YYYY-MM-DD HH24:MI:SS'), 8, 4);
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (9, TO_TIMESTAMP('2024-03-13 17:45:00', 'YYYY-MM-DD HH24:MI:SS'), 9, 5);
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (10, TO_TIMESTAMP('2024-03-14 18:45:00', 'YYYY-MM-DD HH24:MI:SS'), 10, 5);
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (11, TO_TIMESTAMP('2024-03-15 19:45:00', 'YYYY-MM-DD HH24:MI:SS'), 1, 6);
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (12, TO_TIMESTAMP('2024-03-16 20:45:00', 'YYYY-MM-DD HH24:MI:SS'), 2, 6);
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (13, TO_TIMESTAMP('2024-03-17 21:45:00', 'YYYY-MM-DD HH24:MI:SS'), 3, 7);
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (14, TO_TIMESTAMP('2024-03-18 22:45:00', 'YYYY-MM-DD HH24:MI:SS'), 4, 7);
-INSERT INTO LIKES (LIKE_ID, CREATED_AT, USER_ID, POST_ID) VALUES (15, TO_TIMESTAMP('2024-03-19 23:45:00', 'YYYY-MM-DD HH24:MI:SS'), 5, 8);
+EXEC ADD_LIKE (2, 1);
+EXEC ADD_LIKE (3, 12);
+EXEC ADD_LIKE (1, 2);
+EXEC ADD_LIKE (4, 5);
+EXEC ADD_LIKE (5, 3);
+EXEC ADD_LIKE (6, 1);
+EXEC ADD_LIKE (7, 4);
+EXEC ADD_LIKE (8, 10);
+EXEC ADD_LIKE (9, 11);
+EXEC ADD_LIKE (10, 2);
+EXEC ADD_LIKE (1, 6);
+EXEC ADD_LIKE (2, 1);
+EXEC ADD_LIKE (3, 7);
+EXEC ADD_LIKE (4, 6);
+EXEC ADD_LIKE (5, 8);
 
 -- COMMENTS
 
-INSERT INTO COMMENTS (COMMENT_ID, CREATED_AT, COMMENTS, USER_ID, POST_ID) VALUES (1, TO_TIMESTAMP('2024-03-05 09:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'This is going to be groundbreaking!', 1, 1);
-INSERT INTO COMMENTS (COMMENT_ID, CREATED_AT, COMMENTS, USER_ID, POST_ID) VALUES (2, TO_TIMESTAMP('2024-03-06 10:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Can''t wait to participate.', 3, 1);
-INSERT INTO COMMENTS (COMMENT_ID, CREATED_AT, COMMENTS, USER_ID, POST_ID) VALUES (3, TO_TIMESTAMP('2024-03-07 11:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Looking forward to this!', 5, 2);
-INSERT INTO COMMENTS (COMMENT_ID, CREATED_AT, COMMENTS, USER_ID, POST_ID) VALUES (4, TO_TIMESTAMP('2024-03-08 12:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Is registration still open?', 2, 2);
-INSERT INTO COMMENTS (COMMENT_ID, CREATED_AT, COMMENTS, USER_ID, POST_ID) VALUES (5, TO_TIMESTAMP('2024-03-09 13:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Amazing event!', 4, 3);
-INSERT INTO COMMENTS (COMMENT_ID, CREATED_AT, COMMENTS, USER_ID, POST_ID) VALUES (6, TO_TIMESTAMP('2024-03-10 14:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Will there be a live stream?', 6, 3);
-INSERT INTO COMMENTS (COMMENT_ID, CREATED_AT, COMMENTS, USER_ID, POST_ID) VALUES (7, TO_TIMESTAMP('2024-03-11 15:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'I love these workshops!', 7, 4);
-INSERT INTO COMMENTS (COMMENT_ID, CREATED_AT, COMMENTS, USER_ID, POST_ID) VALUES (8, TO_TIMESTAMP('2024-03-12 16:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'Finally, something for us foodies.', 8, 4);
-INSERT INTO COMMENTS (COMMENT_ID, CREATED_AT, COMMENTS, USER_ID, POST_ID) VALUES (9, TO_TIMESTAMP('2024-03-13 17:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'What time does it start?', 9, 5);
-INSERT INTO COMMENTS (COMMENT_ID, CREATED_AT, COMMENTS, USER_ID, POST_ID) VALUES (10, TO_TIMESTAMP('2024-03-14 18:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'This will be fun!', 10, 5);
+EXEC ADD_COMMENT ('This is going to be groundbreaking!', 1, 1);
+EXEC ADD_COMMENT ('Can''t wait to participate.', 3, 12);
+EXEC ADD_COMMENT ('Looking forward to this!', 5, 2);
+EXEC ADD_COMMENT ('Is registration still open?', 2, 1);
+EXEC ADD_COMMENT ('Amazing event!', 4, 3);
+EXEC ADD_COMMENT ('Will there be a live stream?', 6, 10);
+EXEC ADD_COMMENT ('I love these workshops!', 7, 1);
+EXEC ADD_COMMENT ('Finally, something for us foodies.', 8, 4);
+EXEC ADD_COMMENT ('What time does it start?', 9, 7);
+EXEC ADD_COMMENT ('This will be fun!', 10, 5);
 
 -- USER_FOLLOWERS
 
-INSERT INTO USER_FOLLOWERS (FOLLOWER_ID, FOLLOWING_ID) VALUES (1, 2);
-INSERT INTO USER_FOLLOWERS (FOLLOWER_ID, FOLLOWING_ID) VALUES (1, 3);
-INSERT INTO USER_FOLLOWERS (FOLLOWER_ID, FOLLOWING_ID) VALUES (2, 1);
-INSERT INTO USER_FOLLOWERS (FOLLOWER_ID, FOLLOWING_ID) VALUES (3, 4);
-INSERT INTO USER_FOLLOWERS (FOLLOWER_ID, FOLLOWING_ID) VALUES (4, 2);
-INSERT INTO USER_FOLLOWERS (FOLLOWER_ID, FOLLOWING_ID) VALUES (5, 6);
-INSERT INTO USER_FOLLOWERS (FOLLOWER_ID, FOLLOWING_ID) VALUES (6, 5);
-INSERT INTO USER_FOLLOWERS (FOLLOWER_ID, FOLLOWING_ID) VALUES (7, 8);
-INSERT INTO USER_FOLLOWERS (FOLLOWER_ID, FOLLOWING_ID) VALUES (8, 7);
-INSERT INTO USER_FOLLOWERS (FOLLOWER_ID, FOLLOWING_ID) VALUES (9, 10);
-INSERT INTO USER_FOLLOWERS (FOLLOWER_ID, FOLLOWING_ID) VALUES (10, 9);
-INSERT INTO USER_FOLLOWERS (FOLLOWER_ID, FOLLOWING_ID) VALUES (2, 4);
-INSERT INTO USER_FOLLOWERS (FOLLOWER_ID, FOLLOWING_ID) VALUES (4, 3);
+EXEC ADD_FOLLOWER (1, 2);
+EXEC ADD_FOLLOWER (1, 3);
+EXEC ADD_FOLLOWER (2, 1);
+EXEC ADD_FOLLOWER (3, 4);
+EXEC ADD_FOLLOWER (4, 2);
+EXEC ADD_FOLLOWER (5, 6);
+EXEC ADD_FOLLOWER (6, 5);
+EXEC ADD_FOLLOWER (7, 8);
+EXEC ADD_FOLLOWER (8, 7);
+EXEC ADD_FOLLOWER (9, 10);
+EXEC ADD_FOLLOWER (10, 9);
+EXEC ADD_FOLLOWER (2, 4);
+EXEC ADD_FOLLOWER (4, 3);
 
 
 -- SPONSORSHIP
 
-INSERT INTO SPONSORSHIP (SPONSORSHIP_ID, CREATED_AT, POST_ID, SPONSEE_ID, SPONSOR_ID, STATUS) VALUES (1, TO_TIMESTAMP('2024-03-05 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), 1, 2, 1, 'SUCCESSFUL');
-INSERT INTO SPONSORSHIP (SPONSORSHIP_ID, CREATED_AT, POST_ID, SPONSEE_ID, SPONSOR_ID, STATUS) VALUES (2, TO_TIMESTAMP('2024-03-06 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), 2, 1, 3, 'PENDING');
-INSERT INTO SPONSORSHIP (SPONSORSHIP_ID, CREATED_AT, POST_ID, SPONSEE_ID, SPONSOR_ID, STATUS) VALUES (3, TO_TIMESTAMP('2024-03-07 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), 3, 4, 2, 'CANCELLED');
-INSERT INTO SPONSORSHIP (SPONSORSHIP_ID, CREATED_AT, POST_ID, SPONSEE_ID, SPONSOR_ID, STATUS) VALUES (4, TO_TIMESTAMP('2024-03-08 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), 4, 3, 1, 'SUCCESSFUL');
-INSERT INTO SPONSORSHIP (SPONSORSHIP_ID, CREATED_AT, POST_ID, SPONSEE_ID, SPONSOR_ID, STATUS) VALUES (5, TO_TIMESTAMP('2024-03-09 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), 5, 5, 2, 'PENDING');
-INSERT INTO SPONSORSHIP (SPONSORSHIP_ID, CREATED_AT, POST_ID, SPONSEE_ID, SPONSOR_ID, STATUS) VALUES (6, TO_TIMESTAMP('2024-03-10 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), 6, 6, 3, 'CANCELLED');
-INSERT INTO SPONSORSHIP (SPONSORSHIP_ID, CREATED_AT, POST_ID, SPONSEE_ID, SPONSOR_ID, STATUS) VALUES (7, TO_TIMESTAMP('2024-03-11 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), 7, 7, 1, 'SUCCESSFUL');
-INSERT INTO SPONSORSHIP (SPONSORSHIP_ID, CREATED_AT, POST_ID, SPONSEE_ID, SPONSOR_ID, STATUS) VALUES (8, TO_TIMESTAMP('2024-03-12 17:00:00', 'YYYY-MM-DD HH24:MI:SS'), 8, 8, 2, 'PENDING');
-INSERT INTO SPONSORSHIP (SPONSORSHIP_ID, CREATED_AT, POST_ID, SPONSEE_ID, SPONSOR_ID, STATUS) VALUES (9, TO_TIMESTAMP('2024-03-13 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), 9, 9, 3, 'CANCELLED');
-INSERT INTO SPONSORSHIP (SPONSORSHIP_ID, CREATED_AT, POST_ID, SPONSEE_ID, SPONSOR_ID, STATUS) VALUES (10, TO_TIMESTAMP('2024-03-14 19:00:00', 'YYYY-MM-DD HH24:MI:SS'), 10, 10, 1, 'SUCCESSFUL');
+EXEC ADD_SPONSORSHIP (1, 2, 1);
+EXEC ADD_SPONSORSHIP (2, 1, 3);
+EXEC ADD_SPONSORSHIP (3, 4, 2);
+EXEC ADD_SPONSORSHIP (4, 3, 1);
 
-
--- TAGS 
-
-INSERT INTO TAGS (TAG_ID, CREATED_AT, TAG, POINT) VALUES (1, TO_TIMESTAMP('2024-03-01 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), '#Tech', 100);
-INSERT INTO TAGS (TAG_ID, CREATED_AT, TAG, POINT) VALUES (2, TO_TIMESTAMP('2024-03-02 08:30:00', 'YYYY-MM-DD HH24:MI:SS'), '#Art', 80);
-INSERT INTO TAGS (TAG_ID, CREATED_AT, TAG, POINT) VALUES (3, TO_TIMESTAMP('2024-03-03 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), '#Charity', 90);
-INSERT INTO TAGS (TAG_ID, CREATED_AT, TAG, POINT) VALUES (4, TO_TIMESTAMP('2024-03-04 09:30:00', 'YYYY-MM-DD HH24:MI:SS'), '#LocalFood', 70);
-INSERT INTO TAGS (TAG_ID, CREATED_AT, TAG, POINT) VALUES (5, TO_TIMESTAMP('2024-03-05 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), '#Fitness', 60);
-INSERT INTO TAGS (TAG_ID, CREATED_AT, TAG, POINT) VALUES (6, TO_TIMESTAMP('2024-03-06 10:30:00', 'YYYY-MM-DD HH24:MI:SS'), '#Sustainability', 50);
-INSERT INTO TAGS (TAG_ID, CREATED_AT, TAG, POINT) VALUES (7, TO_TIMESTAMP('2024-03-07 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), '#Music', 85);
-INSERT INTO TAGS (TAG_ID, CREATED_AT, TAG, POINT) VALUES (8, TO_TIMESTAMP('2024-03-08 11:30:00', 'YYYY-MM-DD HH24:MI:SS'), '#Gourmet', 95);
-INSERT INTO TAGS (TAG_ID, CREATED_AT, TAG, POINT) VALUES (9, TO_TIMESTAMP('2024-03-09 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), '#DIY', 65);
-INSERT INTO TAGS (TAG_ID, CREATED_AT, TAG, POINT) VALUES (10, TO_TIMESTAMP('2024-03-10 12:30:00', 'YYYY-MM-DD HH24:MI:SS'), '#Yoga', 55);
 
 
 -- USER_HASHTAGS
 
-INSERT INTO USER_HASHTAGS (USER_ID, HASHTAG_ID) VALUES (3, 2);
-INSERT INTO USER_HASHTAGS (USER_ID, HASHTAG_ID) VALUES (4, 1);
-INSERT INTO USER_HASHTAGS (USER_ID, HASHTAG_ID) VALUES (5, 5);
-INSERT INTO USER_HASHTAGS (USER_ID, HASHTAG_ID) VALUES (6, 8);
-INSERT INTO USER_HASHTAGS (USER_ID, HASHTAG_ID) VALUES (7, 6);
-INSERT INTO USER_HASHTAGS (USER_ID, HASHTAG_ID) VALUES (8, 7);
-INSERT INTO USER_HASHTAGS (USER_ID, HASHTAG_ID) VALUES (9, 9);
-INSERT INTO USER_HASHTAGS (USER_ID, HASHTAG_ID) VALUES (10, 10);
-
--- POST_HASHTAGS
-
-INSERT INTO POSTS_HASHTAGS (POST_ID, HASHTAG_ID) VALUES (4, 4);
-INSERT INTO POSTS_HASHTAGS (POST_ID, HASHTAG_ID) VALUES (5, 1);
-INSERT INTO POSTS_HASHTAGS (POST_ID, HASHTAG_ID) VALUES (6, 6);
-INSERT INTO POSTS_HASHTAGS (POST_ID, HASHTAG_ID) VALUES (7, 7);
-INSERT INTO POSTS_HASHTAGS (POST_ID, HASHTAG_ID) VALUES (8, 8);
-INSERT INTO POSTS_HASHTAGS (POST_ID, HASHTAG_ID) VALUES (9, 9);
-INSERT INTO POSTS_HASHTAGS (POST_ID, HASHTAG_ID) VALUES (10, 10);
-INSERT INTO POSTS_HASHTAGS (POST_ID, HASHTAG_ID) VALUES (11, 2);
-INSERT INTO POSTS_HASHTAGS (POST_ID, HASHTAG_ID) VALUES (12, 1);
+EXEC ADD_USER_HASHTAG (3, 2);
+EXEC ADD_USER_HASHTAG (4, 1);
+EXEC ADD_USER_HASHTAG (5, 5);
+EXEC ADD_USER_HASHTAG (6, 8);
+EXEC ADD_USER_HASHTAG (7, 6);
+EXEC ADD_USER_HASHTAG (8, 7);
+EXEC ADD_USER_HASHTAG (9, 9);
+EXEC ADD_USER_HASHTAG (10, 10);
 
