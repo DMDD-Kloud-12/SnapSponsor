@@ -33,3 +33,27 @@ EXCEPTION
         RETURN SQLERRM;
 END PROCESS_HASHTAGS;
 /
+
+
+
+CREATE OR REPLACE FUNCTION CALCULATE_POST_POPULARITY (PI_POST_ID NUMBER) RETURN NUMBER IS
+    popularity_score NUMBER;
+    post_age_days NUMBER;
+BEGIN
+
+    SELECT 
+        LIKESCOUNT + COMMENTSCOUNT + (EXTRACT(DAY FROM SYSDATE - CREATED_AT) * -5) INTO popularity_score
+    FROM 
+        POSTS 
+    WHERE 
+        POST_ID = PI_POST_ID;
+    
+    RETURN popularity_score;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+    WHEN OTHERS THEN
+        -- Consider handling specific exceptions or returning a default value
+        RAISE;
+END CALCULATE_POST_POPULARITY;
+/

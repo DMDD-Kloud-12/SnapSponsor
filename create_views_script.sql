@@ -54,6 +54,7 @@ SELECT u.user_id,
        LEFT JOIN tags t ON uh.hashtag_id = t.tag_id
 ORDER BY u.created_at DESC;
 
+
 -- User_tag_management_view
 CREATE OR REPLACE VIEW user_tag_management_view AS
 SELECT u.user_id,
@@ -66,6 +67,23 @@ SELECT u.user_id,
        LEFT JOIN tags t ON uh.hashtag_id = t.tag_id
 GROUP BY u.user_id, u.name, t.tag_id, t.tag, t.point
 ORDER BY u.user_id;
+
+
+-- Post Popularity report 
+CREATE OR REPLACE VIEW POST_POPULARITY_REPORT AS
+SELECT 
+    p.POST_ID,
+    p.USER_ID,
+    u.NAME AS USER_NAME,
+    p.TEXT,
+    p.LIKESCOUNT,
+    p.COMMENTSCOUNT,
+    CALCULATE_POST_POPULARITY(p.POST_ID) AS POPULARITY_SCORE
+FROM 
+    POSTS p
+JOIN 
+    USERS u ON p.USER_ID = u.USER_ID;
+    
 
 
 --views for all tables
