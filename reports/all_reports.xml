@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<displays>
+<folder>
+	<name><![CDATA[Snap Sponsor]]></name>
+	<tooltip><![CDATA[]]></tooltip>
+	<description><![CDATA[]]></description>
+		<display id="c49dd367-018e-1000-8003-7f000001dddb" type="" style="Table" enable="true">
+		<name><![CDATA[Content Performance Report]]></name>
+		<description><![CDATA[Analyzes top-performing posts by engagement (likes and comments).]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[WITH PostEngagement AS (
+    SELECT 
+        p.POST_ID, 
+        CAST(DBMS_LOB.SUBSTR(p.TEXT, 4000, 1) AS VARCHAR2(4000)) AS TEXT, 
+        COUNT(DISTINCT l.LIKE_ID) AS TotalLikes, 
+        COUNT(DISTINCT c.COMMENT_ID) AS TotalComments
+    FROM 
+        POSTS p
+    LEFT JOIN 
+        LIKES l ON p.POST_ID = l.POST_ID
+    LEFT JOIN 
+        COMMENTS c ON p.POST_ID = c.POST_ID
+    GROUP BY 
+        p.POST_ID, 
+        CAST(DBMS_LOB.SUBSTR(p.TEXT, 4000, 1) AS VARCHAR2(4000))
+)
+SELECT 
+    pe.POST_ID, 
+    pe.TEXT, 
+    u.NAME AS PosterName,
+    p.CREATED_AT,
+    p.LIKESCOUNT, 
+    p.COMMENTSCOUNT,
+    (p.LIKESCOUNT + p.COMMENTSCOUNT) AS TotalEngagement
+FROM 
+    PostEngagement pe
+JOIN 
+    POSTS p ON pe.POST_ID = p.POST_ID
+JOIN 
+    USERS u ON p.USER_ID = u.USER_ID
+ORDER BY 
+    TotalEngagement DESC
+FETCH FIRST 10 ROWS ONLY]]></sql>
+		</query>
+	</display>
+	<display id="c49c6c1f-018e-1000-8002-7f000001dddb" type="" style="Table" enable="true">
+		<name><![CDATA[User Engagement Report]]></name>
+		<description><![CDATA[This report gives an overview of user activity, highlighting the most engaged users based on their posts, likes, and comments.]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT 
+    u.USER_ID, 
+    u.NAME, 
+    COUNT(DISTINCT p.POST_ID) AS Posts, 
+    COUNT(DISTINCT l.LIKE_ID) AS Likes, 
+    COUNT(DISTINCT c.COMMENT_ID) AS Comments
+FROM 
+    USERS u
+LEFT JOIN 
+    POSTS p ON u.USER_ID = p.USER_ID
+LEFT JOIN 
+    LIKES l ON u.USER_ID = l.USER_ID
+LEFT JOIN 
+    COMMENTS c ON u.USER_ID = c.USER_ID
+GROUP BY 
+    u.USER_ID, 
+    u.NAME
+ORDER BY 
+    Posts DESC, Likes DESC, Comments DESC]]></sql>
+		</query>
+	</display>
+	<display id="c4affc06-018e-1000-8007-7f000001dddb" type="" style="Table" enable="true">
+		<name><![CDATA[Active Users Over Time Report]]></name>
+		<description><![CDATA[Tracks the growth of active users over time, measured by posts, likes, and comments.]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT 
+    TO_CHAR(CREATED_AT, 'YYYY-MM') AS Month, 
+    COUNT(DISTINCT USER_ID) AS ActiveUsers
+FROM 
+    (
+        SELECT USER_ID, CREATED_AT FROM POSTS
+        UNION ALL
+        SELECT USER_ID, CREATED_AT FROM LIKES
+        UNION ALL
+        SELECT USER_ID, CREATED_AT FROM COMMENTS
+    )
+GROUP BY 
+    TO_CHAR(CREATED_AT, 'YYYY-MM')
+ORDER BY 
+    Month]]></sql>
+		</query>
+	</display>
+	<display id="c4b11280-018e-1000-8008-7f000001dddb" type="" style="Table" enable="true">
+		<name><![CDATA[Trending Hashtags Report]]></name>
+		<description><![CDATA[Identifies the most popular hashtags based on their occurrence in posts.]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT 
+    t.TAG, 
+    COUNT(*) AS TagCount
+FROM 
+    POSTS_HASHTAGS ph
+    JOIN TAGS t ON ph.HASHTAG_ID = t.TAG_ID
+GROUP BY 
+    t.TAG
+ORDER BY 
+    TagCount DESC
+FETCH FIRST 10 ROWS ONLY]]></sql>
+		</query>
+	</display>
+	<display id="c4b1afe6-018e-1000-8009-7f000001dddb" type="" style="Table" enable="true">
+		<name><![CDATA[Content Performance by Category Report]]></name>
+		<description><![CDATA[Analyzes the performance of posts across different categories (assuming categories can be derived from VENUE, FOOD, MONETARY, OTHER).]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT 
+    'Venue' AS Category, 
+    COUNT(*) AS PostCount, 
+    SUM(LIKESCOUNT) AS TotalLikes, 
+    SUM(COMMENTSCOUNT) AS TotalComments
+FROM 
+    POSTS
+WHERE 
+    VENUE IS NOT NULL
+UNION ALL
+SELECT 
+    'Food', 
+    COUNT(*), 
+    SUM(LIKESCOUNT), 
+    SUM(COMMENTSCOUNT)
+FROM 
+    POSTS
+WHERE 
+    FOOD IS NOT NULL
+UNION ALL
+SELECT 
+    'Monetary', 
+    COUNT(*), 
+    SUM(LIKESCOUNT), 
+    SUM(COMMENTSCOUNT)
+FROM 
+    POSTS
+WHERE 
+    MONETARY IS NOT NULL
+UNION ALL
+SELECT 
+    'Other', 
+    COUNT(*), 
+    SUM(LIKESCOUNT), 
+    SUM(COMMENTSCOUNT)
+FROM 
+    POSTS
+WHERE 
+    OTHER IS NOT NULL]]></sql>
+		</query>
+	</display>
+	<display id="c4b66d02-018e-1000-800c-7f000001dddb" type="" style="Table" enable="true">
+		<name><![CDATA[Sponsorship Conversion Report]]></name>
+		<description><![CDATA[Measures how engagement levels change over time for users who joined in different months, which can be indicative of the platform's ability to retain interest.]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+			<TYPE><![CDATA[horizontal]]></TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT 
+    STATUS, 
+    COUNT(*) AS Total,
+    ROUND((COUNT(*) * 100.0 / (SELECT COUNT(*) FROM SPONSORSHIP)), 2) AS PercentageOfTotal
+FROM 
+    SPONSORSHIP
+GROUP BY 
+    STATUS]]></sql>
+		</query>
+	</display>
+</folder>
+</displays>

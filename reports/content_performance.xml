@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<displays>
+<display id="c49dd367-018e-1000-8003-7f000001dddb" type="" style="Table" enable="true">
+	<name><![CDATA[Content Performance Report]]></name>
+	<description><![CDATA[Analyzes top-performing posts by engagement (likes and comments).]]></description>
+	<tooltip><![CDATA[]]></tooltip>
+	<drillclass><![CDATA[]]></drillclass>
+	<CustomValues>
+		<TYPE><![CDATA[horizontal]]></TYPE>
+	</CustomValues>
+	<query>
+		<sql><![CDATA[WITH PostEngagement AS (
+    SELECT 
+        p.POST_ID, 
+        CAST(DBMS_LOB.SUBSTR(p.TEXT, 4000, 1) AS VARCHAR2(4000)) AS TEXT, 
+        COUNT(DISTINCT l.LIKE_ID) AS TotalLikes, 
+        COUNT(DISTINCT c.COMMENT_ID) AS TotalComments
+    FROM 
+        POSTS p
+    LEFT JOIN 
+        LIKES l ON p.POST_ID = l.POST_ID
+    LEFT JOIN 
+        COMMENTS c ON p.POST_ID = c.POST_ID
+    GROUP BY 
+        p.POST_ID, 
+        CAST(DBMS_LOB.SUBSTR(p.TEXT, 4000, 1) AS VARCHAR2(4000))
+)
+SELECT 
+    pe.POST_ID, 
+    pe.TEXT, 
+    u.NAME AS PosterName,
+    p.CREATED_AT,
+    p.LIKESCOUNT, 
+    p.COMMENTSCOUNT,
+    (p.LIKESCOUNT + p.COMMENTSCOUNT) AS TotalEngagement
+FROM 
+    PostEngagement pe
+JOIN 
+    POSTS p ON pe.POST_ID = p.POST_ID
+JOIN 
+    USERS u ON p.USER_ID = u.USER_ID
+ORDER BY 
+    TotalEngagement DESC
+FETCH FIRST 10 ROWS ONLY]]></sql>
+	</query>
+</display>
+</displays>

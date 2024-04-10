@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<displays>
+<display id="c4b1afe6-018e-1000-8009-7f000001dddb" type="" style="Table" enable="true">
+	<name><![CDATA[Content Performance by Category Report]]></name>
+	<description><![CDATA[Analyzes the performance of posts across different categories (assuming categories can be derived from VENUE, FOOD, MONETARY, OTHER).]]></description>
+	<tooltip><![CDATA[]]></tooltip>
+	<drillclass><![CDATA[]]></drillclass>
+	<CustomValues>
+		<TYPE><![CDATA[horizontal]]></TYPE>
+	</CustomValues>
+	<query>
+		<sql><![CDATA[SELECT 
+    'Venue' AS Category, 
+    COUNT(*) AS PostCount, 
+    SUM(LIKESCOUNT) AS TotalLikes, 
+    SUM(COMMENTSCOUNT) AS TotalComments
+FROM 
+    POSTS
+WHERE 
+    VENUE IS NOT NULL
+UNION ALL
+SELECT 
+    'Food', 
+    COUNT(*), 
+    SUM(LIKESCOUNT), 
+    SUM(COMMENTSCOUNT)
+FROM 
+    POSTS
+WHERE 
+    FOOD IS NOT NULL
+UNION ALL
+SELECT 
+    'Monetary', 
+    COUNT(*), 
+    SUM(LIKESCOUNT), 
+    SUM(COMMENTSCOUNT)
+FROM 
+    POSTS
+WHERE 
+    MONETARY IS NOT NULL
+UNION ALL
+SELECT 
+    'Other', 
+    COUNT(*), 
+    SUM(LIKESCOUNT), 
+    SUM(COMMENTSCOUNT)
+FROM 
+    POSTS
+WHERE 
+    OTHER IS NOT NULL]]></sql>
+	</query>
+</display>
+</displays>

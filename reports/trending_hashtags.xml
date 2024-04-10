@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<displays>
+<display id="c4b11280-018e-1000-8008-7f000001dddb" type="" style="Table" enable="true">
+	<name><![CDATA[Trending Hashtags Report]]></name>
+	<description><![CDATA[Identifies the most popular hashtags based on their occurrence in posts.]]></description>
+	<tooltip><![CDATA[]]></tooltip>
+	<drillclass><![CDATA[]]></drillclass>
+	<CustomValues>
+		<TYPE><![CDATA[horizontal]]></TYPE>
+	</CustomValues>
+	<query>
+		<sql><![CDATA[SELECT 
+    t.TAG, 
+    COUNT(*) AS TagCount
+FROM 
+    POSTS_HASHTAGS ph
+    JOIN TAGS t ON ph.HASHTAG_ID = t.TAG_ID
+GROUP BY 
+    t.TAG
+ORDER BY 
+    TagCount DESC
+FETCH FIRST 10 ROWS ONLY]]></sql>
+	</query>
+</display>
+</displays>

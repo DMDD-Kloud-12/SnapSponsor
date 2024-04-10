@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<displays>
+<display id="c4b66d02-018e-1000-800c-7f000001dddb" type="" style="Table" enable="true">
+	<name><![CDATA[Sponsorship Conversion Report]]></name>
+	<description><![CDATA[Measures how engagement levels change over time for users who joined in different months, which can be indicative of the platform's ability to retain interest.]]></description>
+	<tooltip><![CDATA[]]></tooltip>
+	<drillclass><![CDATA[]]></drillclass>
+	<CustomValues>
+		<TYPE><![CDATA[horizontal]]></TYPE>
+	</CustomValues>
+	<query>
+		<sql><![CDATA[SELECT 
+    STATUS, 
+    COUNT(*) AS Total,
+    ROUND((COUNT(*) * 100.0 / (SELECT COUNT(*) FROM SPONSORSHIP)), 2) AS PercentageOfTotal
+FROM 
+    SPONSORSHIP
+GROUP BY 
+    STATUS]]></sql>
+	</query>
+</display>
+</displays>
