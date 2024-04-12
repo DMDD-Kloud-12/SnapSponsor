@@ -17,7 +17,7 @@ SELECT p.post_id,
   FROM posts p
        JOIN posts_hashtags ph ON p.post_id = ph.post_id
        JOIN tags t ON ph.hashtag_id = t.tag_id
-  WHERE p.activestatus = 1
+  WHERE p.activestatus = 1;
 
 -- Sponsorship_request_status_view
 CREATE OR REPLACE VIEW sponsorship_request_status_view AS
@@ -30,7 +30,7 @@ SELECT s.sponsorship_id,
   FROM sponsorship s
        JOIN posts p ON s.post_id = p.post_id
        JOIN users u1 ON s.sponsor_id = u1.user_id
-       JOIN users u2 ON s.sponsee_id = u2.user_id
+       JOIN users u2 ON s.sponsee_id = u2.user_id;
 
 -- User_profile_management_view
 CREATE OR REPLACE VIEW user_profile_management_view AS
@@ -49,7 +49,7 @@ SELECT u.user_id,
        t.point
   FROM users u
        LEFT JOIN user_hashtags uh ON u.user_id = uh.user_id
-       LEFT JOIN tags t ON uh.hashtag_id = t.tag_id
+       LEFT JOIN tags t ON uh.hashtag_id = t.tag_id;
 
 
 -- User_tag_management_view
@@ -62,7 +62,7 @@ SELECT u.user_id,
   FROM users u
        LEFT JOIN user_hashtags uh ON u.user_id = uh.user_id
        LEFT JOIN tags t ON uh.hashtag_id = t.tag_id
-GROUP BY u.user_id, u.name, t.tag_id, t.tag, t.point
+GROUP BY u.user_id, u.name, t.tag_id, t.tag, t.point;
 
 
 -- Post Popularity report 

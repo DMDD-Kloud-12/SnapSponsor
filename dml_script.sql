@@ -41,18 +41,18 @@ EXEC ADD_USER (0, 'Jack Davis', 'profile10.jpg', '5551547010', 'Professional DJ,
 
 -- POSTS 
 
-EXEC ADD_POST ('Tech Conference 2024 - Exploring New Horizons #tech', 'post1.jpg', 'Convention Center', 'Snacks available', 'Free', 'Early bird discount', 2, 1);
-EXEC ADD_POST ('Annual #Charity Run - Run for a Cause', 'post2.jpg', 'City Park', 'Healthy snacks', '$30 entry', 'Prizes for top 3', 1, 1);
-EXEC ADD_POST ('#Art Exhibition Opening Night', 'post3.jpg', 'Art Gallery', 'Wine & Cheese', 'By invite', 'Featured artists', 3, 1);
-EXEC ADD_POST ('Local #Farmers Market - Fresh & Organic', 'post4.jpg', 'Downtown', 'Free samples', 'Free', null, 7, 1);
-EXEC ADD_POST ('#Coding Bootcamp: Learn to Code in 10 Weeks', 'post5.jpg', 'Tech Hub', 'Lunch provided', '$500', 'Scholarships available', 4, 1);
-EXEC ADD_POST ('Sustainability in Event Planning #Workshop', 'post6.jpg', 'Eco Center', 'Vegan friendly', '$20', 'Materials provided', 7, 1);
-EXEC ADD_POST ('Live Jazz Night - Enjoy #Classic Hits #music', 'post7.jpg', 'Jazz Club', 'Special menu', 'Cover $10', 'Reservations recommended', 9, 1);
-EXEC ADD_POST ('Gourmet #Food Tasting Event', 'post8.jpg', 'Luxury Hotel', 'Chefs selection', '$100', 'Limited seats', 6, 1);
-EXEC ADD_POST ('DIY Home #Decor Workshop #planning', 'post9.jpg', 'Craft Store', 'Snacks & Drinks', '$25', 'All materials included', 5, 1);
-EXEC ADD_POST ('#Yoga Retreat - Find Your Inner #Peace', 'post10.jpg', 'Mountain Resort', 'Organic meals', '$300', 'Spa access included', 5, 1);
-EXEC ADD_POST ('Film Screening: Indie #Film Night', 'post11.jpg', 'Indie Theater', 'Popcorn & Soda', '$15', 'Q&A with directors', 8, 1);
-EXEC ADD_POST ('#Photography Contest: Capture the City', 'post12.jpg', 'Online', null, 'Free', 'Winning prize $500', 4, 1);
+EXEC ADD_POST ('Tech Conference 2024 - Exploring New Horizons #tech', 'post1.jpg', 'Convention Center', 'Snacks available', 'Free', 'Early bird discount', 2, 1); COMMIT;
+EXEC ADD_POST ('Annual #Charity Run - Run for a Cause', 'post2.jpg', 'City Park', 'Healthy snacks', '$30 entry', 'Prizes for top 3', 1, 1); COMMIT;
+EXEC ADD_POST ('#Art Exhibition Opening Night', 'post3.jpg', 'Art Gallery', 'Wine & Cheese', 'By invite', 'Featured artists', 3, 1); COMMIT;
+EXEC ADD_POST ('Local #Farmers Market - Fresh & Organic', 'post4.jpg', 'Downtown', 'Free samples', 'Free', null, 7, 1); COMMIT;
+EXEC ADD_POST ('#Coding Bootcamp: Learn to Code in 10 Weeks', 'post5.jpg', 'Tech Hub', 'Lunch provided', '$500', 'Scholarships available', 4, 1); COMMIT;
+EXEC ADD_POST ('Sustainability in Event Planning #Workshop', 'post6.jpg', 'Eco Center', 'Vegan friendly', '$20', 'Materials provided', 7, 1); COMMIT;
+EXEC ADD_POST ('Live Jazz Night - Enjoy #Classic Hits #music', 'post7.jpg', 'Jazz Club', 'Special menu', 'Cover $10', 'Reservations recommended', 9, 1); COMMIT;
+EXEC ADD_POST ('Gourmet #Food Tasting Event', 'post8.jpg', 'Luxury Hotel', 'Chefs selection', '$100', 'Limited seats', 6, 1); COMMIT;
+EXEC ADD_POST ('DIY Home #Decor Workshop #planning', 'post9.jpg', 'Craft Store', 'Snacks & Drinks', '$25', 'All materials included', 5, 1); COMMIT;
+EXEC ADD_POST ('#Yoga Retreat - Find Your Inner #Peace', 'post10.jpg', 'Mountain Resort', 'Organic meals', '$300', 'Spa access included', 5, 1); COMMIT;
+EXEC ADD_POST ('Film Screening: Indie #Film Night', 'post11.jpg', 'Indie Theater', 'Popcorn & Soda', '$15', 'Q&A with directors', 8, 1); COMMIT;
+EXEC ADD_POST ('#Photography Contest: Capture the City', 'post12.jpg', 'Online', null, 'Free', 'Winning prize $500', 4, 1); COMMIT;
 
 -- LIKES
 

@@ -48,3 +48,32 @@ BEGIN
     END IF;
 END;
 /
+
+CREATE OR REPLACE TRIGGER trg_post_operations
+FOR INSERT ON posts
+COMPOUND TRIGGER
+
+    TYPE t_posts_rec IS TABLE OF posts%ROWTYPE INDEX BY PLS_INTEGER;
+    posts_tab t_posts_rec;
+    idx PLS_INTEGER := 0;
+
+    AFTER EACH ROW IS
+    BEGIN
+        idx := idx + 1;
+        posts_tab(idx).post_id := :NEW.post_id;
+        posts_tab(idx).text := :NEW.text;
+    END AFTER EACH ROW;
+
+    AFTER STATEMENT IS
+    BEGIN
+        FOR i IN 1 .. posts_tab.COUNT LOOP
+            DECLARE
+                v_process_result VARCHAR2(4000);
+            BEGIN
+                v_process_result := PROCESS_HASHTAGS(posts_tab(i).post_id, posts_tab(i).text);
+                DBMS_OUTPUT.PUT_LINE('Hashtags processed for Post ID ' || posts_tab(i).post_id || ': ' || v_process_result);
+            END;
+        END LOOP;
+    END AFTER STATEMENT;
+
+END trg_post_operations;
