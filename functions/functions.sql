@@ -17,10 +17,9 @@ BEGIN
         
 
         ADD_TAG(v_hashtag, 0, v_tag_id);
-
-        
         -- Associate the post with the tag using the ADD_POST_HASHTAG procedure
-        EXECUTE IMMEDIATE 'CALL ADD_POST_HASHTAG(:1, :2)' USING PI_POST_ID, v_tag_id;
+        ADD_POST_HASHTAG(PI_POST_ID, v_tag_id)
+
         
         -- Prepare for the next iteration
         v_text := SUBSTR(v_text, v_end_position);
